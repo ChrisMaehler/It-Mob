@@ -21,4 +21,13 @@
   </form>
   <p>And Daniel if you get lost, this <a href="http://alterrazzino-frankfurt.com/die-pizzeria/">doc Daniel</a> will show you the way.</p>
   <button ion-button secondary menuToggle>Toggle Menu</button>
+
+  <ion-list>
+    <button ion-item *ngFor="let user of users">
+  
+      {{user.firstname}}
+      
+    </button>
+  </ion-list>
+
 </ion-content>

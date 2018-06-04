@@ -1,6 +1,13 @@
 {
   "name": "myProject",
   "app_id": "",
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "https://creditapp-358e.restdb.io/rest",
+      "rejectUnauthorized": false
+    }
+  ],
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}
