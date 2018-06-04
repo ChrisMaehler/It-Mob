@@ -5,7 +5,8 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
-import { TestPage } from '../pages/test/test';
+import { TestPage } from '../pages/test/test'; // Hier die Zeile für die neue Seite manuel hinzufügen
+import { SignUpPage } from '../pages/sign-up/sign-up';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -14,12 +15,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProfileProvider } from '../providers/profile/profile';
 
 
+
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ListPage,
-    TestPage
+    TestPage, // auch hier neue Seite hinzufügen
+    SignUpPage
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,8 @@ import { ProfileProvider } from '../providers/profile/profile';
     MyApp,
     HomePage,
     ListPage,
-    TestPage
+    TestPage,
+    SignUpPage // hier auch
   ],
   providers: [
     StatusBar,
