@@ -5,12 +5,8 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
-
-
-//import {RegistrierungPage} from '../pages/registrierung/registrierung
-
-import { SignUpPage } from '../pages/sign-up/sign-up';
-
+import { TestPage } from '../pages/test/test';
+import {RegistrierungPage} from '../pages/registrierung/registrierung';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -19,14 +15,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProfileProvider } from '../providers/profile/profile';
 
 
-
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ListPage,
-    SignUpPage
-
+    TestPage,
+    RegistrierungPage
   ],
   imports: [
     BrowserModule,
@@ -38,10 +33,8 @@ import { ProfileProvider } from '../providers/profile/profile';
     MyApp,
     HomePage,
     ListPage,
-    SignUpPage // hier auch
-
-    //RegistrierungPage 
-
+    TestPage,
+    RegistrierungPage
   ],
   providers: [
     StatusBar,

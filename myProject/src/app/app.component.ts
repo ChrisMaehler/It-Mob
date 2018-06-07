@@ -5,12 +5,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
-import { TestPage } from '../pages/test/test'
-
+import { TestPage } from '../pages/test/test';
 import {RegistrierungPage} from '../pages/registrierung/registrierung';
 
-import { SignUpPage } from '../pages/sign-up/sign-up';
-Component({
+@Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
@@ -28,11 +26,7 @@ export class MyApp {
       { title: 'Home', component: HomePage },
       { title: 'List', component: ListPage },
       {  title: 'Test', component: TestPage},
-
       {title: 'Registrierung', component:RegistrierungPage}
-
-      {  title: 'SignUp', component: SignUpPage}
-
     ];
 
   }
