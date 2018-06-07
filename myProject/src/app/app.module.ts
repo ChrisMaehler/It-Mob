@@ -5,7 +5,9 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
-import {RegistrierungPage} from '../pages/registrierung/registrierung;
+
+
+//import {RegistrierungPage} from '../pages/registrierung/registrierung
 
 import { SignUpPage } from '../pages/sign-up/sign-up';
 
@@ -23,8 +25,7 @@ import { ProfileProvider } from '../providers/profile/profile';
     MyApp,
     HomePage,
     ListPage,
-    SignUpPage,
-    RegistrierungPage
+    SignUpPage
 
   ],
   imports: [
@@ -37,8 +38,9 @@ import { ProfileProvider } from '../providers/profile/profile';
     MyApp,
     HomePage,
     ListPage,
-    SignUpPage, // hier auch
-    RegistrierungPage 
+    SignUpPage // hier auch
+
+    //RegistrierungPage 
 
   ],
   providers: [
