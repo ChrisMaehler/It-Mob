@@ -7,6 +7,8 @@
 *.tmp
 *.tmp.*
 log.txt
+package-lock.json
+package.json
 *.sublime-project
 *.sublime-workspace
 .vscode/
