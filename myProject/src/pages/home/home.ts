@@ -11,6 +11,7 @@ export class HomePage {
 
 
   private users;
+  private creditData = {};
 
   constructor(public navCtrl: NavController, private restProvider: RestProvider, private profile: ProfileProvider) {
     console.log("TEST")
@@ -24,7 +25,7 @@ export class HomePage {
     //   });
     // }, error =>  {
     //   console.log(error);
-    // });   
+    // });
   }
 
   // get all users, set first user as profile
@@ -41,7 +42,17 @@ export class HomePage {
   getUserById1(id){
     this.restProvider.getUserById(id).subscribe(data => {
       console.log(data);
-    })    
+    })
+  }
+
+  postCreditData(){
+    // console.log(this.creditData)
+    this.restProvider.createCreditData(this.creditData).subscribe(response => {
+      console.log(response);
+    }, error =>  {
+      console.log(error);
+    });
+
   }
 
 
