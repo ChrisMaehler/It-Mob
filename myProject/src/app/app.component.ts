@@ -7,6 +7,8 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { TestPage } from '../pages/test/test';
 import {RegistrierungPage} from '../pages/registrierung/registrierung';
+import {SignInPage} from '../pages/sign in/sign in';
+import { componentFactoryName } from '@angular/compiler';
 
 @Component({
   templateUrl: 'app.html'
@@ -26,7 +28,8 @@ export class MyApp {
       { title: 'Home', component: HomePage },
       { title: 'List', component: ListPage },
       {  title: 'Test', component: TestPage},
-      {title: 'Registrierung', component:RegistrierungPage}
+      {title: 'Registrierung', component:RegistrierungPage},
+      {  title: 'Sign in', component: SignInPage}
     ];
 
   }
@@ -45,4 +48,5 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+
 }
