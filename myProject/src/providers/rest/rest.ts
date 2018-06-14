@@ -12,6 +12,7 @@ export class RestProvider {
 
   private BASE_URL = "/api";  // "https://creditapp-cf3d.restdb.io/rest"
   private USERS_URL = this.BASE_URL + '/appuser';
+  private CREDIT_URL = this.BASE_URL + '/creditdata';
 
   constructor(public http: HttpClient) {
   }
@@ -29,6 +30,11 @@ export class RestProvider {
   createUser(user){
     var headers = new HttpHeaders().set('cache-control','no-cache').set('x-apikey','874dc4397f95158840d71f3559fb99ce18722');
     return this.http.post(this.USERS_URL, user, {headers: headers});
+  }
+
+  createCreditData(creditData){
+    var headers = new HttpHeaders().set('cache-control','no-cache').set('x-apikey','874dc4397f95158840d71f3559fb99ce18722');
+    return this.http.post(this.CREDIT_URL, creditData, {headers: headers});
   }
 
 }
