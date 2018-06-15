@@ -7,13 +7,8 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { TestPage } from '../pages/test/test';
 import {RegistrierungPage} from '../pages/registrierung/registrierung';
-<<<<<<< HEAD
 import {SignUpPage} from "../pages/sign-up/sign-up";
 import {ProfileProvider} from "../providers/profile/profile";
-=======
-import {SignInPage} from '../pages/sign in/sign in';
-import { componentFactoryName } from '@angular/compiler';
->>>>>>> da4ecdc5b3358b33ed4c74f4d6b3442c335663af
 
 @Component({
   templateUrl: 'app.html'
@@ -33,12 +28,7 @@ export class MyApp {
       { title: 'Home', component: HomePage },
       { title: 'List', component: ListPage },
       {  title: 'Test', component: TestPage},
-<<<<<<< HEAD
       {  title: 'Logout', component: null}
-=======
-      {title: 'Registrierung', component:RegistrierungPage},
-      {  title: 'Sign in', component: SignInPage}
->>>>>>> da4ecdc5b3358b33ed4c74f4d6b3442c335663af
     ];
 
   }
