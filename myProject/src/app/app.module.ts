@@ -24,11 +24,7 @@ import {SignUpPage} from "../pages/sign-up/sign-up";
     ListPage,
     TestPage,
     RegistrierungPage,
-<<<<<<< HEAD
     SignUpPage
-=======
-    SignInPage
->>>>>>> da4ecdc5b3358b33ed4c74f4d6b3442c335663af
   ],
   imports: [
     BrowserModule,
@@ -42,11 +38,7 @@ import {SignUpPage} from "../pages/sign-up/sign-up";
     ListPage,
     TestPage,
     RegistrierungPage,
-<<<<<<< HEAD
     SignUpPage
-=======
-    SignInPage
->>>>>>> da4ecdc5b3358b33ed4c74f4d6b3442c335663af
   ],
   providers: [
     StatusBar,
