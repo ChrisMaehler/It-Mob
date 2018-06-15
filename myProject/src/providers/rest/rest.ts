@@ -17,6 +17,11 @@ export class RestProvider {
   constructor(public http: HttpClient) {
   }
 
+  getData(){
+    var headers = new HttpHeaders().set('cache-control','no-cache').set('x-apikey','874dc4397f95158840d71f3559fb99ce18722');
+    return this.http.get(this.CREDIT_URL, {headers: headers});
+  }
+
   getUsers(){
     var headers = new HttpHeaders().set('cache-control','no-cache').set('x-apikey','874dc4397f95158840d71f3559fb99ce18722');
     return this.http.get(this.USERS_URL, {headers: headers});

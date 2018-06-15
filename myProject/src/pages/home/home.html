@@ -6,30 +6,28 @@
     <ion-title>Home</ion-title>
   </ion-navbar>
 </ion-header>
-
 <ion-content padding>
   <h3>Kreditvergleich</h3>
   <h1> Kreditvergleich - günstiger geht es nicht oder vielleicht doch!</h1>
+  <form>
+    Wieviel?<br>
+    <input type="text" name="amount" value="10.000">
+    <br>
+    Für was?<br>
+    <input type="text" name="what" value="Studenten Kredit">
+    <br><br>
+    <input type="submit" value="Submit">
+  </form>
+  <p>And Daniel if you get lost, this <a href="http://alterrazzino-frankfurt.com/die-pizzeria/">doc Daniel</a> will show you the way.</p>
+  <button ion-button secondary menuToggle>Toggle Menu</button>
 
-
-  <form (ngSubmit)="postCreditData()">
-     <ion-item>
-       <ion-label>Wie viel?</ion-label>
-       <ion-input type="number" [(ngModel)]="creditData.volumen" name="volumen" placeholder="z.B. 10000"></ion-input>
-     </ion-item>
-     <ion-item>
-       <ion-label>Für was?</ion-label>
-       <ion-input type="text" [(ngModel)]="creditData.name" name="name" placeholder="z.B. Auto-Kredit"></ion-input>
-     </ion-item>
-     <button ion-button type="submit" block>Post in DB</button>
-   </form>
-
-  <!-- <ion-list>
+  <ion-list>
     <button ion-item *ngFor="let user of users">
 
       {{user.firstname}} {{user.lastname}}
 
     </button>
-  </ion-list> -->
+  </ion-list>
 
 </ion-content>
+
