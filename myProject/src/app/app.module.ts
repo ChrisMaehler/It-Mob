@@ -13,6 +13,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { RestProvider } from '../providers/rest/rest';
 import { HttpClientModule } from '@angular/common/http';
 import { ProfileProvider } from '../providers/profile/profile';
+import {SignUpPage} from "../pages/sign-up/sign-up";
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { ProfileProvider } from '../providers/profile/profile';
     HomePage,
     ListPage,
     TestPage,
-    RegistrierungPage
+    RegistrierungPage,
+    SignUpPage
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,8 @@ import { ProfileProvider } from '../providers/profile/profile';
     HomePage,
     ListPage,
     TestPage,
-    RegistrierungPage
+    RegistrierungPage,
+    SignUpPage
   ],
   providers: [
     StatusBar,

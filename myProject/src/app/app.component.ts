@@ -7,6 +7,8 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { TestPage } from '../pages/test/test';
 import {RegistrierungPage} from '../pages/registrierung/registrierung';
+import {SignUpPage} from "../pages/sign-up/sign-up";
+import {ProfileProvider} from "../providers/profile/profile";
 
 @Component({
   templateUrl: 'app.html'
@@ -14,11 +16,11 @@ import {RegistrierungPage} from '../pages/registrierung/registrierung';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = SignUpPage;
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private profile: ProfileProvider) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -26,7 +28,7 @@ export class MyApp {
       { title: 'Home', component: HomePage },
       { title: 'List', component: ListPage },
       {  title: 'Test', component: TestPage},
-      {title: 'Registrierung', component:RegistrierungPage}
+      {  title: 'Logout', component: null}
     ];
 
   }
@@ -41,8 +43,17 @@ export class MyApp {
   }
 
   openPage(page) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
+
+    if(page.component) {
+      // Reset the content nav to have just this page
+      // we wouldn't want the back button to show in this scenario
+      this.nav.setRoot(page.component);
+    } else {
+      // logout:
+      // 1) Setze Profil auf null
+      // 2) Geh zur SignUp Seite
+      this.profile.setProfile(null);
+      this.nav.setRoot(SignUpPage);
+    }
   }
 }

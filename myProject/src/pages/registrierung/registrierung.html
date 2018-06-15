@@ -17,55 +17,55 @@
 
 <ion-content padding>
 
-  <form (ngSubmit)="postUserData()">
+  <form [formGroup]="userData" (ngSubmit)="postUserData()">
      <ion-item>
-       <ion-label>Vorname</ion-label>
-       <ion-input type="text" [(ngModel)]="userData.firstname" name="firstname" placeholder="z.B. Max"></ion-input>
+       <ion-label color="primary" stacked>Vorname</ion-label>
+       <ion-input type="text" formControlName="firstname" placeholder="z.B. Max"></ion-input>
      </ion-item>
      <ion-item>
-       <ion-label>Nachname</ion-label>
-       <ion-input type="text" [(ngModel)]="userData.lastname" name="lastname" placeholder="z.B. Mustermann"></ion-input>
+       <ion-label color="primary" stacked>Nachname</ion-label>
+       <ion-input type="text" formControlName="lastname" placeholder="z.B. Mustermann"></ion-input>
      </ion-item>
      <ion-item>
-       <ion-label>Username</ion-label>
-       <ion-input type="text" [(ngModel)]="userData.username" name="username" placeholder="z.B. m.mustermann"></ion-input>
+       <ion-label color="primary" stacked>Username</ion-label>
+       <ion-input type="text" formControlName="username" placeholder="z.B. m.mustermann"></ion-input>
      </ion-item>
      <ion-item>
-       <ion-label>Straße</ion-label>
-       <ion-input type="text" [(ngModel)]="userData.street" name="street" placeholder="z.B. Mainstreet"></ion-input>
+       <ion-label color="primary" stacked>Straße</ion-label>
+       <ion-input type="text" formControlName="street" placeholder="z.B. Mainstreet"></ion-input>
      </ion-item>
      <ion-item>
-       <ion-label>Postleitzahl</ion-label>
-       <ion-input type="number" [(ngModel)]="userData.postcode" name="postcode" placeholder="z.B. 60320"></ion-input>
+       <ion-label color="primary" stacked>Postleitzahl</ion-label>
+       <ion-input type="number" formControlName="postcode" placeholder="z.B. 60320"></ion-input>
      </ion-item>
      <ion-item>
-       <ion-label>Land</ion-label>
-       <ion-input type="text" [(ngModel)]="userData.country" name="country" placeholder="z.B. Germany"></ion-input>
+       <ion-label color="primary" stacked>Land</ion-label>
+       <ion-input type="text" formControlName="country" placeholder="z.B. Germany"></ion-input>
      </ion-item>
      <ion-item>
-       <ion-label>Geburtstag</ion-label>
-       <ion-input type="text" [(ngModel)]="userData.birthdate" name="birthdate" placeholder="z.B. 01/01/1900"></ion-input>
+       <ion-label color="primary" stacked>Geburtstag</ion-label>
+       <ion-input type="text" formControlName="birthdate" placeholder="TT/MM/JJJJ"></ion-input>
      </ion-item>
      <ion-item>
-        <ion-label>Geschlecht</ion-label>
-        <ion-select [(ngModel)]="userData.sex" name="sex">
+        <ion-label color="primary" stacked>Geschlecht</ion-label>
+        <ion-select formControlName="sex">
           <ion-option value="female">female</ion-option>
           <ion-option value="male">male</ion-option>
         </ion-select>
+     </ion-item>
+       <ion-item>
+        <ion-label color="primary" stacked>E-Mail</ion-label>
+        <ion-input type="text" formControlName="email" placeholder="z.B. M.Mustermann@mail.de"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>E-Mail</ion-label>
-        <ion-input type="text" [(ngModel)]="userData.email" name="email" placeholder="z.B. M.Mustermann@mail.de"></ion-input>
+        <ion-label color="primary" stacked>Passwort</ion-label>
+        <ion-input type="password" formControlName="password" placeholder="z.B. Passwort123"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>Passwort</ion-label>
-        <ion-input type="password" [(ngModel)]="userData.password" name="password" placeholder="z.B. Passwort123"></ion-input>
+        <ion-label color="primary" stacked>Jährliches Einkommen</ion-label>
+        <ion-input type="number" formControlName="yearlyincome" placeholder="z.B. 50000"></ion-input>
       </ion-item>
-      <ion-item>
-        <ion-label>Jährliches Einkommen</ion-label>
-        <ion-input type="number" [(ngModel)]="userData.yearlyincome" name="yearlyincome" placeholder="z.B. 50000"></ion-input>
-      </ion-item>
-     <button ion-button type="submit" block>Post in DB</button>
+     <button ion-button [disabled]="!userData.valid" type="submit" block>Post in DB</button>
    </form>
 
 
