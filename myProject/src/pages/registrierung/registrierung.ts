@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
+import {AlertController, IonicPage, NavController, NavParams, MenuController} from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
 import { ProfileProvider } from '../../providers/profile/profile';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
@@ -20,7 +20,7 @@ export class RegistrierungPage {
 
   private userData: FormGroup;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder,  private alertCtrl: AlertController, private restProvider: RestProvider, private profile: ProfileProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private menu: MenuController, private formBuilder: FormBuilder,  private alertCtrl: AlertController, private restProvider: RestProvider, private profile: ProfileProvider) {
     this.userData = this.formBuilder.group({
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
@@ -40,12 +40,16 @@ export class RegistrierungPage {
   }
 
   ionViewDidLoad() {
+    this.menu.swipeEnable(false, 'menu1');
+  }
+
+  ionViewWillLeave(){
   }
 
   postUserData(){
     // console.log(this.userData.value)
     this.restProvider.createUser(this.userData.value).subscribe(response => {
-      console.log(response)
+      this.menu.swipeEnable(true, 'menu1');
       // Response == User aus DB, wird also in profile gesetzt
       this.profile.setProfile(response);
       // HomePage als Root setzen (damit mit Back nicht zurückgegangen werden kann) und zu HomePage wechseln

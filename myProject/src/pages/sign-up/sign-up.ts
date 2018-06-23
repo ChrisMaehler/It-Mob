@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
+import {AlertController, IonicPage, NavController, NavParams, MenuController} from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import {RestProvider} from "../../providers/rest/rest";
 import {ProfileProvider} from "../../providers/profile/profile";
@@ -22,7 +22,7 @@ export class SignUpPage {
 
   private credentials: FormGroup;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder, private alertCtrl: AlertController, private restProvider: RestProvider, private profile: ProfileProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private menu: MenuController, private formBuilder: FormBuilder, private alertCtrl: AlertController, private restProvider: RestProvider, private profile: ProfileProvider) {
     this.credentials = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
@@ -30,6 +30,11 @@ export class SignUpPage {
   }
 
   ionViewDidLoad() {
+    this.menu.swipeEnable(false, 'menu1');
+  }
+
+  ionViewWillLeave(){
+    
   }
 
   // Methode für Sign-In. Da mock-up, wird username+password Validierung auf dem Client ausgeführt
@@ -56,6 +61,7 @@ export class SignUpPage {
           // Passwort stimmt überein:
           // 1. Profil setzen
           // 2. HomePage als Root setzen (damit mit Back nicht zurückgegangen werden kann) und zu HomePage wechseln
+          this.menu.swipeEnable(true, 'menu1');
           this.profile.setProfile(user);
           this.navCtrl.setRoot(HomePage);
         }
