@@ -4,8 +4,6 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
-import { TestPage } from '../pages/test/test';
 import {RegistrierungPage} from '../pages/registrierung/registrierung';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -21,8 +19,6 @@ import { ProfileDataPage } from '../pages/profile-data/profile-data';
   declarations: [
     MyApp,
     HomePage,
-    ListPage,
-    TestPage,
     RegistrierungPage,
     SignUpPage,
     ProfileDataPage
@@ -36,8 +32,6 @@ import { ProfileDataPage } from '../pages/profile-data/profile-data';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage,
-    TestPage,
     RegistrierungPage,
     SignUpPage,
     ProfileDataPage
