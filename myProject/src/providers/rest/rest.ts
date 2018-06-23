@@ -13,6 +13,7 @@ export class RestProvider {
   private BASE_URL = "/api";  // "https://creditapp-cf3d.restdb.io/rest"
   private USERS_URL = this.BASE_URL + '/appuser';
   private CREDIT_URL = this.BASE_URL + '/creditdata';
+  private PERSONA_URL = this.BASE_URL + '/personagroupcollection';
 
   constructor(public http: HttpClient) {
   }
@@ -50,6 +51,11 @@ export class RestProvider {
   createCreditData(creditData){
     var headers = new HttpHeaders().set('cache-control','no-cache').set('x-apikey','874dc4397f95158840d71f3559fb99ce18722');
     return this.http.post(this.CREDIT_URL, creditData, {headers: headers});
+  }
+
+  getPersonaGroup(profession, house_owner){
+    var headers = new HttpHeaders().set('cache-control','no-cache').set('x-apikey','874dc4397f95158840d71f3559fb99ce18722');
+    return this.http.get(this.PERSONA_URL+'?q={"profession":"'+ profession +'", "house_owner":'+house_owner+'}', {headers: headers});
   }
 
 }

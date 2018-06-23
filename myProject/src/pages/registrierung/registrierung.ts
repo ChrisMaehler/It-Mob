@@ -32,7 +32,9 @@ export class RegistrierungPage {
       sex: ['', Validators.required],
       email: ['', Validators.email],
       password: ['', Validators.minLength(8)],
-      yearlyincome: ['', Validators.required]
+      yearlyincome: ['', Validators.required],
+      profession: ['', Validators.required],
+      house_owner: ['false', Validators.required]
     });
   }
 
@@ -44,18 +46,33 @@ export class RegistrierungPage {
   }
 
   postUserData(){
-    // console.log(this.userData.value)
-    this.restProvider.createUser(this.userData.value).subscribe(response => {
+    var myData = this.userData.value;
+
+    this.restProvider.getPersonaGroup(myData.profession, myData.house_owner).subscribe((persona_response: any) => {
+      var age = this.getAge(myData.birthdate);
+      
+      for(let data of persona_response){
+        if(myData.yearlyincome >= data.yearly_income_from && myData.yearlyincome <= data.yearly_income_to && age >= data.age_class_from && age <= data.age_class_to){
+          myData.persona_id = data.persona_id;
+        }
+      }
+
+      // console.log(this.userData.value)
+      this.restProvider.createUser(myData).subscribe(response => {
       this.menu.swipeEnable(true, 'menu1');
       // Response == User aus DB, wird also in profile gesetzt
       this.profile.setProfile(response);
       // HomePage als Root setzen (damit mit Back nicht zurückgegangen werden kann) und zu HomePage wechseln
       this.navCtrl.setRoot(HomePage);
       //
-    }, error =>  {
-      console.log(error);
-      this.userExistsAlert(this.userData.value.username);
+      }, error =>  {
+        console.log(error);
+        this.userExistsAlert(this.userData.value.username);
+      });
     });
+
+
+    
   }
 
 
@@ -66,6 +83,30 @@ export class RegistrierungPage {
       buttons: ['OK']
     });
     alert.present();
+  }
+
+  public getAge(birthday){
+
+    var date = new Date(birthday);
+    var birthMonth = date.getMonth();
+    var birthDay = date.getDay();
+    var birthYear = date.getFullYear();
+
+    var todayDate = new Date(),
+    todayYear = todayDate.getFullYear(),
+    todayMonth = todayDate.getMonth(),
+    todayDay = todayDate.getDate(),
+    age = todayYear - birthYear;
+
+    if (todayMonth < birthMonth - 1) {
+        age--;
+    }
+
+    if (birthMonth - 1 === todayMonth && todayDay < birthDay) {
+        age--;
+    }
+
+    return age;
   }
 
 }

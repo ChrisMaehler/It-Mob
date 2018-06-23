@@ -62,9 +62,22 @@
         <ion-input type="password" formControlName="password" placeholder="z.B. Passwort123"></ion-input>
       </ion-item>
       <ion-item>
+          <ion-label color="primary" stacked>Beruf</ion-label>
+          <ion-select formControlName="profession">
+            <ion-option value="Arbeitslos">Arbeitslos</ion-option>
+            <ion-option value="Angestellt">Angestellt</ion-option>
+            <ion-option value="Selbstständig">Selbstständig</ion-option>
+            <ion-option value="Sonstiges">Sonstiges</ion-option>
+          </ion-select>
+       </ion-item>
+      <ion-item>
         <ion-label color="primary" stacked>Jährliches Einkommen</ion-label>
         <ion-input type="number" formControlName="yearlyincome" placeholder="z.B. 50000"></ion-input>
       </ion-item>
+      <ion-item>
+          <ion-checkbox item-right formControlName="house_owner"></ion-checkbox>
+          <ion-label color="primary">Grundbesitzer</ion-label>
+        </ion-item>
      <button ion-button [disabled]="!userData.valid" type="submit" block>Post in DB</button>
    </form>
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { ProfileProvider } from '../../providers/profile/profile';
 import { RestProvider } from '../../providers/rest/rest';
 
@@ -19,19 +19,66 @@ export class ProfileDataPage {
 
   private myData: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private profile: ProfileProvider, private rest: RestProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private toastCtrl: ToastController, private profile: ProfileProvider, private rest: RestProvider) {
     this.myData = this.profile.getProfile();
-    console.log(this.myData);
   }
 
   ionViewDidLoad() {
   
   }
 
-  saveData(){
-    this.rest.editUser(this.myData).subscribe((response: any) => {
-      console.log(response)
+  private saveData(){
+    this.rest.getPersonaGroup(this.myData.profession, this.myData.house_owner).subscribe((persona_response: any) => {
+      var age = this.getAge(this.myData.birthdate);
+      
+      for(let data of persona_response){
+        if(this.myData.yearlyincome >= data.yearly_income_from && this.myData.yearlyincome <= data.yearly_income_to && age >= data.age_class_from && age <= data.age_class_to){
+          this.myData.persona_id = data.persona_id;
+        }
+      }
+
+      this.rest.editUser(this.myData).subscribe((response: any) => {
+        this.profile.setProfile(response);
+        this.myData = this.profile.getProfile();
+        this.showToast('Deine Daten wurde aktualisiert!');
+      });
+    }, error => {
+      console.log(error)
+      this.showToast('Ein Fehler ist aufgetreten!')
     });
+  }
+
+  public showToast(message){
+    let toast = this.toastCtrl.create({
+      message: message,
+      duration: 3000,
+      position: 'middle'
+    });
+    toast.present();
+  }
+
+  public getAge(birthday){
+
+    var date = new Date(birthday);
+    var birthMonth = date.getMonth();
+    var birthDay = date.getDay();
+    var birthYear = date.getFullYear();
+
+    var todayDate = new Date(),
+    todayYear = todayDate.getFullYear(),
+    todayMonth = todayDate.getMonth(),
+    todayDay = todayDate.getDate(),
+    age = todayYear - birthYear;
+
+    if (todayMonth < birthMonth - 1) {
+        age--;
+    }
+
+    if (birthMonth - 1 === todayMonth && todayDay < birthDay) {
+        age--;
+    }
+
+    return age;
   }
 
 }

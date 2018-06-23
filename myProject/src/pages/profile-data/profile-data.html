@@ -52,9 +52,21 @@
      <ion-input type="text" [(ngModel)]="myData.email"></ion-input>
    </ion-item>
    <ion-item>
+      <ion-label color="primary" stacked>Beruf</ion-label>
+      <ion-select [(ngModel)]="myData.profession">
+        <ion-option value="Arbeitslos">Arbeitslos</ion-option>
+        <ion-option value="Angestellt">Angestellt</ion-option>
+        <ion-option value="Selbstständig">Selbstständig</ion-option>
+        <ion-option value="Sonstiges">Sonstiges</ion-option>
+      </ion-select>
+   </ion-item>
+   <ion-item>
      <ion-label color="primary" stacked>Jährliches Einkommen</ion-label>
      <ion-input type="number" [(ngModel)]="myData.yearlyincome"></ion-input>
    </ion-item>
-
+   <ion-item>
+      <ion-checkbox item-right [(ngModel)]="myData.house_owner"></ion-checkbox>
+      <ion-label color="primary">Grundbesitzer</ion-label>
+    </ion-item>
    <button ion-button (click)="saveData()">Speichern</button>
 </ion-content>
