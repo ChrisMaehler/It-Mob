@@ -14,6 +14,7 @@ import { RestProvider } from '../providers/rest/rest';
 import { HttpClientModule } from '@angular/common/http';
 import { ProfileProvider } from '../providers/profile/profile';
 import {SignUpPage} from "../pages/sign-up/sign-up";
+import { ProfileDataPage } from '../pages/profile-data/profile-data';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import {SignUpPage} from "../pages/sign-up/sign-up";
     ListPage,
     TestPage,
     RegistrierungPage,
-    SignUpPage
+    SignUpPage,
+    ProfileDataPage
   ],
   imports: [
     BrowserModule,
@@ -37,7 +39,8 @@ import {SignUpPage} from "../pages/sign-up/sign-up";
     ListPage,
     TestPage,
     RegistrierungPage,
-    SignUpPage
+    SignUpPage,
+    ProfileDataPage
   ],
   providers: [
     StatusBar,

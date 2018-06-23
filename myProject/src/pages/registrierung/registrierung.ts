@@ -28,10 +28,7 @@ export class RegistrierungPage {
       street: ['', Validators.required],
       postcode: ['', Validators.required],
       country: ['', Validators.required],
-      birthdate: ['', Validators.compose([
-        Validators.required,
-        Validators.pattern('^(0[1-9]|[12][0-9]|3[01])[/](0[1-9]|1[012])[/](19|20)[0-9]{2}$')
-      ])],  
+      birthdate: ['', Validators.required],  
       sex: ['', Validators.required],
       email: ['', Validators.email],
       password: ['', Validators.minLength(8)],

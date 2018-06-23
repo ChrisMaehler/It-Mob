@@ -42,6 +42,11 @@ export class RestProvider {
     return this.http.post(this.USERS_URL, user, {headers: headers});
   }
 
+  editUser(user){
+    var headers = new HttpHeaders().set('cache-control','no-cache').set('x-apikey','874dc4397f95158840d71f3559fb99ce18722');
+    return this.http.put(this.USERS_URL+'/'+user._id, user, {headers: headers});
+  }
+
   createCreditData(creditData){
     var headers = new HttpHeaders().set('cache-control','no-cache').set('x-apikey','874dc4397f95158840d71f3559fb99ce18722');
     return this.http.post(this.CREDIT_URL, creditData, {headers: headers});

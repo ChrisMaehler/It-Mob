@@ -14,9 +14,6 @@ export class HomePage {
   private creditData = {};
 
   constructor(public navCtrl: NavController, private restProvider: RestProvider, private profile: ProfileProvider) {
-    console.log("TEST")
-    this.getUsers1();
-    this.getUserById1(6);
     // var user = {firstname: "Max", lastname: "Mustermann"};
     // this.restProvider.createUser(user).subscribe(response => {
     //   console.log(response);
@@ -29,21 +26,21 @@ export class HomePage {
   }
 
   // get all users, set first user as profile
-  getUsers1(){
-    this.restProvider.getUsers().subscribe(data => {
-      this.users = data;
-      this.profile.setProfile(this.users[0]);
+  // getUsers1(){
+  //   this.restProvider.getUsers().subscribe(data => {
+  //     this.users = data;
+  //     this.profile.setProfile(this.users[0]);
 
-      console.log(this.profile.getProfile())
-    })
-  }
+  //     console.log(this.profile.getProfile())
+  //   })
+  // }
 
-  // get single user by id
-  getUserById1(id){
-    this.restProvider.getUserById(id).subscribe(data => {
-      console.log(data);
-    })
-  }
+  // // get single user by id
+  // getUserById1(id){
+  //   this.restProvider.getUserById(id).subscribe(data => {
+  //     console.log(data);
+  //   })
+  // }
 
   postCreditData(){
     // console.log(this.creditData)
