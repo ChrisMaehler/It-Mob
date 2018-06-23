@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, LoadingController } from 'ionic-angular';
 import { ProfileProvider } from '../../providers/profile/profile';
 import { RestProvider } from '../../providers/rest/rest';
 
@@ -18,8 +18,9 @@ import { RestProvider } from '../../providers/rest/rest';
 export class ProfileDataPage {
 
   private myData: any;
+  private loading: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private toastCtrl: ToastController, private profile: ProfileProvider, private rest: RestProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private toastCtrl: ToastController, public loadingCtrl: LoadingController, private profile: ProfileProvider, private rest: RestProvider) {
     this.myData = this.profile.getProfile();
   }
 
@@ -28,6 +29,8 @@ export class ProfileDataPage {
   }
 
   private saveData(){
+    this.showLoading();
+
     this.rest.getPersonaGroup(this.myData.profession, this.myData.house_owner).subscribe((persona_response: any) => {
       var age = this.getAge(this.myData.birthdate);
       
@@ -41,10 +44,12 @@ export class ProfileDataPage {
         this.profile.setProfile(response);
         this.myData = this.profile.getProfile();
         this.showToast('Deine Daten wurde aktualisiert!');
+        this.loading.dismiss();
       });
     }, error => {
       console.log(error)
       this.showToast('Ein Fehler ist aufgetreten!')
+      this.loading.dismiss();
     });
   }
 
@@ -56,6 +61,15 @@ export class ProfileDataPage {
     });
     toast.present();
   }
+
+  showLoading() {
+    this.loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+  
+    this.loading.present();
+  }
+  
 
   public getAge(birthday){
 
