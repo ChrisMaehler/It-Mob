@@ -1,33 +1,41 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
-</ion-header>
-<ion-content padding>
-  <h3>Kreditvergleich</h3>
-  <h1> Kreditvergleich - günstiger geht es nicht oder vielleicht doch!</h1>
-  <form>
-    Wieviel?<br>
-    <input type="text" name="amount" value="10.000">
-    <br>
-    Für was?<br>
-    <input type="text" name="what" value="Studenten Kredit">
-    <br><br>
-    <input type="submit" value="Submit">
-  </form>
-  <p>And Daniel if you get lost, this <a href="http://alterrazzino-frankfurt.com/die-pizzeria/">doc Daniel</a> will show you the way.</p>
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Kreditvergleich</ion-title>
+    </ion-navbar>
+  </ion-header>
+  <ion-content padding>
+    <h1> Kreditvergleich - günstiger geht es nicht oder vielleicht doch!</h1>
+    
+    <ion-item>
+        <ion-label color="primary" stacked>Kreditart</ion-label>
+        <ion-select [(ngModel)]="selected_credit_name" disabled="{{credits_isDisabled}}" (ionChange)="onCreditSelected($event)">
+          <ion-option *ngFor="let credit_name of credits" value="{{credit_name}}">{{credit_name}}</ion-option>
+        </ion-select>
+     </ion-item>
 
-  <ion-list>
-    <button ion-item *ngFor="let user of users">
+     <ion-item>
+        <ion-label color="primary" stacked>Kreditsumme</ion-label>
+        <ion-select [(ngModel)]="selected_credit_value"  disabled="{{values_isDisabled}}" (ionChange)="onCreditValueSelected($event)">
+          <ion-option *ngFor="let credit_value of values" value="{{credit_value}}">{{credit_value}}</ion-option>
+        </ion-select>
+     </ion-item>
 
-      {{user.firstname}} {{user.lastname}}
+     <ion-item>
+        <ion-label color="primary" stacked>Kreditdauer</ion-label>
+        <ion-select [(ngModel)]="selected_credit_duration" disabled="{{durations_isDisabled}}" (ionChange)="onCreditDurationSelected($event)">
+          <ion-option *ngFor="let credit_duration of durations" value="{{credit_duration}}">{{credit_duration}}</ion-option>
+        </ion-select>
+     </ion-item>
 
-    </button>
-  </ion-list>
+     <h1>Empfehlungen für dich</h1>
 
-</ion-content>
-
+     <button ion-item *ngFor="let credit_data of sorted_credit_data" (click)="creditClicked(credit_data)">
+          <b>{{credit_data.finance_institute}}</b> 
+          ab: {{credit_data.interest_rate_from}}%
+     </button>
+  </ion-content>
+  
+  

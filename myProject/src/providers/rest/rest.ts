@@ -12,15 +12,22 @@ export class RestProvider {
 
   private BASE_URL = "/api";  // "https://creditapp-cf3d.restdb.io/rest"
   private USERS_URL = this.BASE_URL + '/appuser';
-  private CREDIT_URL = this.BASE_URL + '/creditdata';
+  private CREDIT_URL = this.BASE_URL + '/creditdatacollection';
   private PERSONA_URL = this.BASE_URL + '/personagroupcollection';
+  private ACTIVITY_URL = this.BASE_URL + '/activitycollection';
 
   constructor(public http: HttpClient) {
   }
 
+  // TODO: Rename to getCreditData()
   getData(){
     var headers = new HttpHeaders().set('cache-control','no-cache').set('x-apikey','874dc4397f95158840d71f3559fb99ce18722');
     return this.http.get(this.CREDIT_URL, {headers: headers});
+  }
+
+  getCreditDataFiltered(name, value_from, duration){
+    var headers = new HttpHeaders().set('cache-control','no-cache').set('x-apikey','874dc4397f95158840d71f3559fb99ce18722');
+    return this.http.get(this.CREDIT_URL+'?q={"name":"'+ name +'", "volume_from":'+value_from+', "duration_month":'+duration+'}', {headers: headers});
   }
 
   getUsers(){
@@ -56,6 +63,11 @@ export class RestProvider {
   getPersonaGroup(profession, house_owner){
     var headers = new HttpHeaders().set('cache-control','no-cache').set('x-apikey','874dc4397f95158840d71f3559fb99ce18722');
     return this.http.get(this.PERSONA_URL+'?q={"profession":"'+ profession +'", "house_owner":"'+house_owner+'"}', {headers: headers});
+  }
+
+  getActivity(persona_id){
+    var headers = new HttpHeaders().set('cache-control','no-cache').set('x-apikey','874dc4397f95158840d71f3559fb99ce18722');
+    return this.http.get(this.ACTIVITY_URL+'?q={"persona_id":'+ persona_id +'}&h={"$orderby":{"activity":-1}}', {headers: headers});
   }
 
 }
