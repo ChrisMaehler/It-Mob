@@ -55,7 +55,7 @@ export class RestProvider {
 
   getPersonaGroup(profession, house_owner){
     var headers = new HttpHeaders().set('cache-control','no-cache').set('x-apikey','874dc4397f95158840d71f3559fb99ce18722');
-    return this.http.get(this.PERSONA_URL+'?q={"profession":"'+ profession +'", "house_owner":'+house_owner+'}', {headers: headers});
+    return this.http.get(this.PERSONA_URL+'?q={"profession":"'+ profession +'", "house_owner":"'+house_owner+'"}', {headers: headers});
   }
 
 }

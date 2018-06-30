@@ -33,7 +33,7 @@ export class ProfileDataPage {
 
     this.rest.getPersonaGroup(this.myData.profession, this.myData.house_owner).subscribe((persona_response: any) => {
       var age = this.getAge(this.myData.birthdate);
-      
+     
       for(let data of persona_response){
         if(this.myData.yearlyincome >= data.yearly_income_from && this.myData.yearlyincome <= data.yearly_income_to && age >= data.age_class_from && age <= data.age_class_to){
           this.myData.persona_id = data.persona_id;
