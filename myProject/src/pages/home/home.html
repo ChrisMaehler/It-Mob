@@ -7,8 +7,9 @@
     </ion-navbar>
   </ion-header>
   <ion-content padding>
-    <h1> Kreditvergleich - günstiger geht es nicht oder vielleicht doch!</h1>
-    
+   <!-- <h1> Kreditvergleich</h1> -->
+    <p align="center">Günstiger geht es nicht oder vielleicht doch!</p>
+
     <ion-item>
         <ion-label color="primary" stacked>Kreditart</ion-label>
         <ion-select [(ngModel)]="selected_credit_name" disabled="{{credits_isDisabled}}" (ionChange)="onCreditSelected($event)">
@@ -30,7 +31,7 @@
         </ion-select>
      </ion-item>
 
-     <h1>Empfehlungen für dich</h1>
+     <p align="center"><font size="3">Unsere Empfehlungen für dich:</font></p>
 
      <button ion-item *ngFor="let credit_data of sorted_credit_data" (click)="creditClicked(credit_data)">
           <b>{{credit_data.finance_institute}}</b> 

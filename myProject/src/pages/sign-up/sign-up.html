@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Sign-In</ion-title>
+    <ion-title>Login</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -14,7 +14,7 @@
       <ion-label color="primary" stacked>Passwort</ion-label>
       <ion-input type="password" formControlName="password" placeholder="Dein Passwort"></ion-input>
     </ion-item>
-    <button ion-button [disabled]="!credentials.valid" type="submit" block>Login</button>
+    <button ion-button [disabled]="!credentials.valid" type="submit" block>Anmelden</button>
   </form>
   <button ion-button (click)="goToRegister()" block>Registrieren</button>
 </ion-content>

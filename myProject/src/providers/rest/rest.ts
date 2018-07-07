@@ -22,7 +22,7 @@ export class RestProvider {
   // TODO: Rename to getCreditData()
   getData(){
     var headers = new HttpHeaders().set('cache-control','no-cache').set('x-apikey','874dc4397f95158840d71f3559fb99ce18722');
-    return this.http.get(this.CREDIT_URL, {headers: headers});
+    return this.http.get(this.CREDIT_URL+'?h={"$orderby":{"name":1,"volume_from":1,"duration_month":1}}', {headers: headers});
   }
 
   getCreditDataFiltered(name, value_from, duration){
@@ -68,6 +68,21 @@ export class RestProvider {
   getActivity(persona_id){
     var headers = new HttpHeaders().set('cache-control','no-cache').set('x-apikey','874dc4397f95158840d71f3559fb99ce18722');
     return this.http.get(this.ACTIVITY_URL+'?q={"persona_id":'+ persona_id +'}&h={"$orderby":{"activity":-1}}', {headers: headers});
+  }
+
+  getActivityPlusOne(persona_id, credit_id){
+    var headers = new HttpHeaders().set('cache-control','no-cache').set('x-apikey','874dc4397f95158840d71f3559fb99ce18722');
+    return this.http.get(this.ACTIVITY_URL+'?q={"persona_id":'+ persona_id +', "credit_id":'+ credit_id + '}', {headers: headers});
+  }
+
+  putActivityPlusOne(activity){
+    var headers = new HttpHeaders().set('cache-control','no-cache').set('x-apikey','874dc4397f95158840d71f3559fb99ce18722');
+    return this.http.put(this.ACTIVITY_URL+'/'+activity._id, activity, {headers: headers});
+  }
+
+  createActivityPlusOne(activity){
+    var headers = new HttpHeaders().set('cache-control','no-cache').set('x-apikey','874dc4397f95158840d71f3559fb99ce18722');
+    return this.http.post(this.ACTIVITY_URL, activity, {headers: headers});
   }
 
 }

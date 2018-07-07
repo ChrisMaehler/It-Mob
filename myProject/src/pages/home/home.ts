@@ -3,6 +3,7 @@ import { NavController, LoadingController } from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
 import { ProfileProvider } from '../../providers/profile/profile';
 import { Observable } from 'rxjs/Observable';
+import { CreditDetailPage } from '../credit-detail/credit-detail';
 
 @Component({
   selector: 'page-home',
@@ -64,15 +65,12 @@ export class HomePage {
     }
   }
 
-
-  getCreditNames(){
-    
+  getCreditNames(){  
     let results = [];
 
     this.credit_names.forEach((value, key) => {
       results.push(key);
     });
-
     return results;
   }
 
@@ -80,7 +78,6 @@ export class HomePage {
     let results = [];
 
     this.credit_values.forEach((value, key)=> {
-
       if(value == creditName){
         results.push(key);
       }
@@ -157,7 +154,18 @@ export class HomePage {
   }
 
   creditClicked(credit){
-    console.log(credit)
+    this.showLoading();
+    this.restProvider.getActivityPlusOne(this.profile.getProfile().persona_id, credit.credit_id).subscribe((activities: any)=>{
+      if(activities.length > 0){
+        let activity = activities[0];
+        activity.activity += 1;
+        this.restProvider.putActivityPlusOne(activity).subscribe(()=> this.loading.dismiss());
+      } else{
+          this.restProvider.createActivityPlusOne({persona_id: this.profile.getProfile().persona_id, credit_id: credit.credit_id, activity: 1}).subscribe(()=> this.loading.dismiss());
+      }
+    });
+
+    this.navCtrl.push(CreditDetailPage, {credit: credit});
   }
 
 

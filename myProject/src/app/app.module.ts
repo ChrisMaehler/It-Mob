@@ -13,6 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProfileProvider } from '../providers/profile/profile';
 import {SignUpPage} from "../pages/sign-up/sign-up";
 import { ProfileDataPage } from '../pages/profile-data/profile-data';
+import { CreditDetailPage } from '../pages/credit-detail/credit-detail';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 
 @NgModule({
@@ -21,7 +23,8 @@ import { ProfileDataPage } from '../pages/profile-data/profile-data';
     HomePage,
     RegistrierungPage,
     SignUpPage,
-    ProfileDataPage
+    ProfileDataPage,
+    CreditDetailPage
   ],
   imports: [
     BrowserModule,
@@ -34,13 +37,15 @@ import { ProfileDataPage } from '../pages/profile-data/profile-data';
     HomePage,
     RegistrierungPage,
     SignUpPage,
-    ProfileDataPage
+    ProfileDataPage,
+    CreditDetailPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RestProvider,
+    InAppBrowser,
     ProfileProvider
   ]
 })
