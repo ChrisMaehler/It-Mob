@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
+import {AlertController, NavController, NavParams} from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
 import { ProfileProvider } from '../../providers/profile/profile';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
@@ -11,7 +11,6 @@ import {HomePage} from "../home/home";
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-registrierung',
   templateUrl: 'registrierung.html',

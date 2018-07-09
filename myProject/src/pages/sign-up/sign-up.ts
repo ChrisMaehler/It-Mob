@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
+import {AlertController, NavController, NavParams} from 'ionic-angular';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import {RestProvider} from "../../providers/rest/rest";
 import {ProfileProvider} from "../../providers/profile/profile";
@@ -13,7 +13,6 @@ import {RegistrierungPage} from "../registrierung/registrierung";
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-sign-up',
   templateUrl: 'sign-up.html',
