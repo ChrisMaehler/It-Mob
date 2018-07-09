@@ -96,4 +96,5 @@ export class SignUpPage {
     alert.present();
   }
 
+
 }
