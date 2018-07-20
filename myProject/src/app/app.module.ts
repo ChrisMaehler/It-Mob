@@ -5,6 +5,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import {RegistrierungPage} from '../pages/registrierung/registrierung';
+import { ImpressumPage } from '../pages/Impressum/impressum';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -24,7 +25,8 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     RegistrierungPage,
     SignUpPage,
     ProfileDataPage,
-    CreditDetailPage
+    CreditDetailPage,
+    ImpressumPage
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,8 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     RegistrierungPage,
     SignUpPage,
     ProfileDataPage,
-    CreditDetailPage
+    CreditDetailPage,
+    ImpressumPage
   ],
   providers: [
     StatusBar,
