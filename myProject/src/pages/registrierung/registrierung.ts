@@ -5,6 +5,8 @@ import { ProfileProvider } from '../../providers/profile/profile';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import {HomePage} from "../home/home";
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 /**
  * Generated class for the RegistrierungPage page.
  *
@@ -22,7 +24,7 @@ export class RegistrierungPage {
   private userData: FormGroup;
   myphoto:any;
 
-  constructor(public navCtrl: NavController, private camera:Camera, public navParams: NavParams, private menu: MenuController, private formBuilder: FormBuilder,  private alertCtrl: AlertController, private restProvider: RestProvider, private profile: ProfileProvider) {
+  constructor(public navCtrl: NavController, public http:HttpClient, private camera:Camera, public navParams: NavParams, private menu: MenuController, private formBuilder: FormBuilder,  private alertCtrl: AlertController, private restProvider: RestProvider, private profile: ProfileProvider) {
     this.userData = this.formBuilder.group({
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
@@ -165,8 +167,9 @@ export class RegistrierungPage {
      // Handle error
     });
 
-
+  } 
+ 
 
   
 }
-}
+
