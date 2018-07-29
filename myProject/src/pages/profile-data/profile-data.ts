@@ -10,7 +10,7 @@ import { RestProvider } from '../../providers/rest/rest';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: 'page-profile-data',
   templateUrl: 'profile-data.html',

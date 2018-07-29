@@ -61,6 +61,13 @@
         <ion-label color="primary" stacked>Passwort</ion-label>
         <ion-input type="password" formControlName="password" placeholder="z.B. Passwort123"></ion-input>
       </ion-item>
+<ion-label color="primary" stacked align="center">Foto des Personalausweises hinzufügen</ion-label> 
+<br>
+<button ion-button (click)="takephoto()" full color="primary">Foto machen</button>
+<button ion-button (click)="getImage()" full color="Secondary">Foto aus der Fologalerie</button>
+<button ion-button (click)="cropImage()" full color="Secondary">Foto aus der Fotogalerie zuschneiden</button>
+<p align="center"><img src="{{ myphoto }}"></p>
+
       <ion-item>
           <ion-label color="primary" stacked>Beruf</ion-label>
           <ion-select formControlName="profession">

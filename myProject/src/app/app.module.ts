@@ -16,7 +16,7 @@ import {SignUpPage} from "../pages/sign-up/sign-up";
 import { ProfileDataPage } from '../pages/profile-data/profile-data';
 import { CreditDetailPage } from '../pages/credit-detail/credit-detail';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
-
+import { Camera } from '@ionic-native/camera';
 
 @NgModule({
   declarations: [
@@ -45,7 +45,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
   ],
   providers: [
     StatusBar,
-    SplashScreen,
+    SplashScreen, Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RestProvider,
     InAppBrowser,

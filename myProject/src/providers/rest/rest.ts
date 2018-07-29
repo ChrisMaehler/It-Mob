@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class RestProvider {
 
-  private BASE_URL = "/api";  // "https://creditapp-cf3d.restdb.io/rest"
+  private BASE_URL = "/api";
   private USERS_URL = this.BASE_URL + '/appuser';
   private CREDIT_URL = this.BASE_URL + '/creditdatacollection';
   private PERSONA_URL = this.BASE_URL + '/personagroupcollection';

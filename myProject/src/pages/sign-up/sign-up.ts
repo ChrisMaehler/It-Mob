@@ -13,7 +13,7 @@ import {RegistrierungPage} from "../registrierung/registrierung";
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: 'page-sign-up',
   templateUrl: 'sign-up.html',
