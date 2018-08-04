@@ -5,7 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import {SignUpPage} from "../pages/sign-up/sign-up";
-import {ImpressumPage} from "../pages/Impressum/impressum";
+import {ImpressumPage} from "../pages/impressum/impressum";
 import {ProfileProvider} from "../providers/profile/profile";
 import { ProfileDataPage } from '../pages/profile-data/profile-data';
 
@@ -26,8 +26,8 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'Meine Daten', component: ProfileDataPage },
-      { title: 'Logout', component: null},
       { title: 'Impressum', component: ImpressumPage },
+      { title: 'Logout', component: null},
     ];
 
   }

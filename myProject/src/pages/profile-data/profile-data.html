@@ -68,5 +68,9 @@
       <ion-checkbox item-right [(ngModel)]="myData.house_owner"></ion-checkbox>
       <ion-label color="primary">Grundbesitzer</ion-label>
     </ion-item>
+  
+    <p align="center"><font size="3">Dein Foto:</font></p>
+    <img [src]="picture" *ngIf="picture" />
+   <button ion-button (click)="takePicture()" block>Foto aufnehmen</button>
    <button ion-button (click)="saveData()" block>Speichern</button>
 </ion-content>

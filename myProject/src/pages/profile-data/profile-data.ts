@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController, LoadingController } from 'ionic-angular';
 import { ProfileProvider } from '../../providers/profile/profile';
 import { RestProvider } from '../../providers/rest/rest';
+import { CameraProvider } from '../../providers/camera/camera';
 
 /**
  * Generated class for the ProfileDataPage page.
@@ -19,8 +20,9 @@ export class ProfileDataPage {
 
   private myData: any;
   private loading: any;
+  private picture: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private toastCtrl: ToastController, public loadingCtrl: LoadingController, private profile: ProfileProvider, private rest: RestProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private camera: CameraProvider, private toastCtrl: ToastController, public loadingCtrl: LoadingController, private profile: ProfileProvider, private rest: RestProvider) {
     this.myData = this.profile.getProfile();
   }
 
@@ -69,7 +71,12 @@ export class ProfileDataPage {
   
     this.loading.present();
   }
-  
+
+  public takePicture() {
+    this.camera.takePicture().subscribe(image => {
+      this.picture = image;
+    });
+  }
 
   public getAge(birthday){
 

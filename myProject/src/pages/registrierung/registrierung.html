@@ -18,70 +18,70 @@
 <ion-content padding>
 
   <form [formGroup]="userData" (ngSubmit)="postUserData()">
-     <ion-item>
-       <ion-label color="primary" stacked>Vorname</ion-label>
-       <ion-input type="text" formControlName="firstname" placeholder="z.B. Max"></ion-input>
-     </ion-item>
-     <ion-item>
-       <ion-label color="primary" stacked>Nachname</ion-label>
-       <ion-input type="text" formControlName="lastname" placeholder="z.B. Mustermann"></ion-input>
-     </ion-item>
-     <ion-item>
-       <ion-label color="primary" stacked>Username</ion-label>
-       <ion-input type="text" formControlName="username" placeholder="z.B. m.mustermann"></ion-input>
-     </ion-item>
-     <ion-item>
-       <ion-label color="primary" stacked>Straße</ion-label>
-       <ion-input type="text" formControlName="street" placeholder="z.B. Mainstreet"></ion-input>
-     </ion-item>
-     <ion-item>
-       <ion-label color="primary" stacked>Postleitzahl</ion-label>
-       <ion-input type="number" formControlName="postcode" placeholder="z.B. 60320"></ion-input>
-     </ion-item>
-     <ion-item>
-       <ion-label color="primary" stacked>Land</ion-label>
-       <ion-input type="text" formControlName="country" placeholder="z.B. Germany"></ion-input>
-     </ion-item>
-     <ion-item>
-        <ion-label color="primary" stacked>Geburtstag</ion-label>
-        <ion-datetime displayFormat="DD/MM/YYYY" formControlName="birthdate"></ion-datetime>
-      </ion-item>
-     <ion-item>
-        <ion-label color="primary" stacked>Geschlecht</ion-label>
-        <ion-select formControlName="sex">
-          <ion-option value="female">female</ion-option>
-          <ion-option value="male">male</ion-option>
-        </ion-select>
-     </ion-item>
-       <ion-item>
-        <ion-label color="primary" stacked>E-Mail</ion-label>
-        <ion-input type="text" formControlName="email" placeholder="z.B. M.Mustermann@mail.de"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label color="primary" stacked>Passwort</ion-label>
-        <ion-input type="password" formControlName="password" placeholder="z.B. Passwort123"></ion-input>
-      </ion-item>
-      <ion-item>
-          <ion-label color="primary" stacked>Beruf</ion-label>
-          <ion-select formControlName="profession">
-            <ion-option value="Arbeitslos">Arbeitslos</ion-option>
-            <ion-option value="Angestellt">Angestellt</ion-option>
-            <ion-option value="Selbstständig">Selbstständig</ion-option>
-            <ion-option value="Sonstiges">Sonstiges</ion-option>
-          </ion-select>
-       </ion-item>
-      <ion-item>
-        <ion-label color="primary" stacked>Jährliches Einkommen</ion-label>
-        <ion-input type="number" formControlName="yearlyincome" placeholder="z.B. 50000"></ion-input>
-      </ion-item>
-      <ion-item>
-          <ion-checkbox item-right formControlName="house_owner"></ion-checkbox>
-          <ion-label color="primary">Grundbesitzer</ion-label>
-        </ion-item>
-     <button ion-button [disabled]="!userData.valid" type="submit" block align="center">Registrieren</button>
-   </form>
+    <ion-item>
+      <ion-label color="primary" stacked>Vorname</ion-label>
+      <ion-input type="text" formControlName="firstname" placeholder="z.B. Max"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" stacked>Nachname</ion-label>
+      <ion-input type="text" formControlName="lastname" placeholder="z.B. Mustermann"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" stacked>Username</ion-label>
+      <ion-input type="text" formControlName="username" placeholder="z.B. m.mustermann"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" stacked>Straße</ion-label>
+      <ion-input type="text" formControlName="street" placeholder="z.B. Mainstreet"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" stacked>Postleitzahl</ion-label>
+      <ion-input type="number" formControlName="postcode" placeholder="z.B. 60320"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" stacked>Land</ion-label>
+      <ion-input type="text" formControlName="country" placeholder="z.B. Germany"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" stacked>Geburtstag</ion-label>
+      <ion-datetime displayFormat="DD/MM/YYYY" formControlName="birthdate"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" stacked>Geschlecht</ion-label>
+      <ion-select formControlName="sex">
+        <ion-option value="female">female</ion-option>
+        <ion-option value="male">male</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" stacked>E-Mail</ion-label>
+      <ion-input type="text" formControlName="email" placeholder="z.B. M.Mustermann@mail.de"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" stacked>Passwort</ion-label>
+      <ion-input type="password" formControlName="password" placeholder="z.B. Passwort123"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" stacked>Beruf</ion-label>
+      <ion-select formControlName="profession">
+        <ion-option value="Arbeitslos">Arbeitslos</ion-option>
+        <ion-option value="Angestellt">Angestellt</ion-option>
+        <ion-option value="Selbstständig">Selbstständig</ion-option>
+        <ion-option value="Sonstiges">Sonstiges</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" stacked>Jährliches Einkommen</ion-label>
+      <ion-input type="number" formControlName="yearlyincome" placeholder="z.B. 50000"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-checkbox item-right formControlName="house_owner"></ion-checkbox>
+      <ion-label color="primary">Grundbesitzer</ion-label>
+    </ion-item>
 
-
-
-
+    <p align="center">
+      <font size="3">Dein Foto:</font>
+    </p>
+    <button ion-button [disabled]="!userData.valid" type="submit" block align="center">Registrieren</button>
+  </form>
 </ion-content>

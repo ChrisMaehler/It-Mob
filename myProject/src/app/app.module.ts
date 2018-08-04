@@ -5,7 +5,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import {RegistrierungPage} from '../pages/registrierung/registrierung';
-import { ImpressumPage } from '../pages/Impressum/impressum';
+import { ImpressumPage } from '../pages/impressum/impressum';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -16,6 +16,8 @@ import {SignUpPage} from "../pages/sign-up/sign-up";
 import { ProfileDataPage } from '../pages/profile-data/profile-data';
 import { CreditDetailPage } from '../pages/credit-detail/credit-detail';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { CameraProvider } from '../providers/camera/camera';
+import { Camera } from '../../node_modules/@ionic-native/camera';
 
 
 @NgModule({
@@ -31,7 +33,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
   imports: [
     BrowserModule,
     HttpClientModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -49,7 +51,9 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RestProvider,
     InAppBrowser,
-    ProfileProvider
+    ProfileProvider,
+    CameraProvider,
+    Camera
   ]
 })
 export class AppModule {}

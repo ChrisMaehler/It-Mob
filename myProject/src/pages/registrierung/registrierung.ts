@@ -4,6 +4,7 @@ import { RestProvider } from '../../providers/rest/rest';
 import { ProfileProvider } from '../../providers/profile/profile';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import {HomePage} from "../home/home";
+
 /**
  * Generated class for the RegistrierungPage page.
  *
@@ -70,11 +71,7 @@ export class RegistrierungPage {
         this.userExistsAlert(this.userData.value.username);
       });
     });
-
-
-    
   }
-
 
   userExistsAlert(username){
     let alert = this.alertCtrl.create({
@@ -108,5 +105,4 @@ export class RegistrierungPage {
 
     return age;
   }
-
 }
