@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {AlertController, IonicPage, NavController, NavParams, MenuController} from 'ionic-angular';
+import {AlertController, IonicPage, NavController, NavParams, MenuController, LoadingController} from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
 import { ProfileProvider } from '../../providers/profile/profile';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
@@ -7,6 +7,8 @@ import {HomePage} from "../home/home";
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
 /**
  * Generated class for the RegistrierungPage page.
  *
@@ -24,7 +26,7 @@ export class RegistrierungPage {
   private userData: FormGroup;
   myphoto:any;
 
-  constructor(public navCtrl: NavController, public http:HttpClient, private camera:Camera, public navParams: NavParams, private menu: MenuController, private formBuilder: FormBuilder,  private alertCtrl: AlertController, private restProvider: RestProvider, private profile: ProfileProvider) {
+  constructor(public navCtrl: NavController, public http:HttpClient, private camera:Camera,private transfer: FileTransfer, private file: File, public navParams: NavParams, private menu: MenuController, private formBuilder: FormBuilder,  private alertCtrl: AlertController, private restProvider: RestProvider, private profile: ProfileProvider,private loadingCtrl:LoadingController) {
     this.userData = this.formBuilder.group({
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
@@ -169,7 +171,43 @@ export class RegistrierungPage {
 
   } 
  
+  uploadImage(){
+
+    let loader = this.loadingCtrl.create({
+content: "Uploading.."
+
+    })
+loader.present();
+
+const fileTransfer:FileTransferObject=this.transfer.create();
+
+    
+  var random = Math.floor(Math.random()*100);
+
+let options:FileUploadOptions={
+  fileKey:'photo',
+  fileName:"myImage " + random+"jpg",
+httpMethod: 'post',
+mimeType:"image/jpeg",
+headers: {}
+}
+
+  fileTransfer.upload(this.myphoto, 'https://creditapp-358e.restdb.io/home/media', options)
+.then((data) => {
+alert("success");
+loader.dismiss();
+}, (err) => {
+  console.log(err);
+  alert("error");
+  loader.dismiss();
+});
+
+} 
+
+
+
+}
+
 
   
-}
 

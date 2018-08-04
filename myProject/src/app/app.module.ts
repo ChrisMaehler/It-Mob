@@ -17,6 +17,8 @@ import { ProfileDataPage } from '../pages/profile-data/profile-data';
 import { CreditDetailPage } from '../pages/credit-detail/credit-detail';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { Camera } from '@ionic-native/camera';
+import { FileTransfer } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,7 @@ import { Camera } from '@ionic-native/camera';
   ],
   providers: [
     StatusBar,
-    SplashScreen, Camera,
+    SplashScreen, Camera, FileTransfer, File, 
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RestProvider,
     InAppBrowser,
