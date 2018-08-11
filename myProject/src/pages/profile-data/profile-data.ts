@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, LoadingController, AlertController } from 'ionic-angular';
 import { ProfileProvider } from '../../providers/profile/profile';
 import { RestProvider } from '../../providers/rest/rest';
 import { CameraProvider } from '../../providers/camera/camera';
+import { Vibration } from '../../../node_modules/@ionic-native/vibration';
 
 /**
  * Generated class for the ProfileDataPage page.
@@ -22,7 +23,7 @@ export class ProfileDataPage {
   private loading: any;
   private picture: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private camera: CameraProvider, private toastCtrl: ToastController, public loadingCtrl: LoadingController, private profile: ProfileProvider, private rest: RestProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private vibration: Vibration,private camera: CameraProvider, private toastCtrl: ToastController, public loadingCtrl: LoadingController, private profile: ProfileProvider, private rest: RestProvider) {
     this.myData = this.profile.getProfile();
   }
 
@@ -35,7 +36,13 @@ export class ProfileDataPage {
 
     this.rest.getPersonaGroup(this.myData.profession, this.myData.house_owner).subscribe((persona_response: any) => {
       var age = this.getAge(this.myData.birthdate);
-     
+      if( age < 18) {
+        this.vibration.vibrate(1000);
+        this.under18Alert();
+        this.loading.dismiss();
+        return;
+      }
+
       for(let data of persona_response){
         if(this.myData.yearlyincome >= data.yearly_income_from && this.myData.yearlyincome <= data.yearly_income_to && age >= data.age_class_from && age <= data.age_class_to){
           this.myData.persona_id = data.persona_id;
@@ -47,6 +54,7 @@ export class ProfileDataPage {
         this.myData = this.profile.getProfile();
         this.showToast('Deine Daten wurde aktualisiert!');
         this.loading.dismiss();
+        this.vibration.vibrate(1000);
       });
     }, error => {
       console.log(error)
@@ -62,6 +70,15 @@ export class ProfileDataPage {
       position: 'middle'
     });
     toast.present();
+  }
+
+  under18Alert(){
+    let alert = this.alertCtrl.create({
+      title: 'Unter 18',
+      subTitle: 'Man muss mindestens 18 Jahre alt sein!',
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
   showLoading() {

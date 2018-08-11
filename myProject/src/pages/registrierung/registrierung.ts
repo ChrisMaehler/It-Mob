@@ -4,6 +4,7 @@ import { RestProvider } from '../../providers/rest/rest';
 import { ProfileProvider } from '../../providers/profile/profile';
 import {Validators, FormBuilder, FormGroup } from '@angular/forms';
 import {HomePage} from "../home/home";
+import { Vibration } from '../../../node_modules/@ionic-native/vibration';
 
 /**
  * Generated class for the RegistrierungPage page.
@@ -21,7 +22,7 @@ export class RegistrierungPage {
 
   private userData: FormGroup;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private menu: MenuController, private formBuilder: FormBuilder,  private alertCtrl: AlertController, private restProvider: RestProvider, private profile: ProfileProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private vibration: Vibration, private menu: MenuController, private formBuilder: FormBuilder,  private alertCtrl: AlertController, private restProvider: RestProvider, private profile: ProfileProvider) {
     this.userData = this.formBuilder.group({
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
@@ -51,7 +52,12 @@ export class RegistrierungPage {
 
     this.restProvider.getPersonaGroup(myData.profession, myData.house_owner).subscribe((persona_response: any) => {
       var age = this.getAge(myData.birthdate);
-      
+      if( age < 18) {
+        this.vibration.vibrate(1000);
+        this.under18Alert();
+        return;
+      }
+
       for(let data of persona_response){
         if(myData.yearlyincome >= data.yearly_income_from && myData.yearlyincome <= data.yearly_income_to && age >= data.age_class_from && age <= data.age_class_to){
           myData.persona_id = data.persona_id;
@@ -77,6 +83,15 @@ export class RegistrierungPage {
     let alert = this.alertCtrl.create({
       title: 'User existiert bereits!',
       subTitle: 'Es existiert bereits ein User mit Username ' + username +'!',
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
+  under18Alert(){
+    let alert = this.alertCtrl.create({
+      title: 'Unter 18',
+      subTitle: 'Man muss mindestens 18 Jahre alt sein!',
       buttons: ['OK']
     });
     alert.present();

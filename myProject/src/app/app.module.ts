@@ -18,6 +18,7 @@ import { CreditDetailPage } from '../pages/credit-detail/credit-detail';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { CameraProvider } from '../providers/camera/camera';
 import { Camera } from '../../node_modules/@ionic-native/camera';
+import { Vibration } from '../../node_modules/@ionic-native/vibration';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { Camera } from '../../node_modules/@ionic-native/camera';
     InAppBrowser,
     ProfileProvider,
     CameraProvider,
-    Camera
+    Camera,
+    Vibration
   ]
 })
 export class AppModule {}

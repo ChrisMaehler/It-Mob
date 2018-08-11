@@ -5,6 +5,7 @@ import {RestProvider} from "../../providers/rest/rest";
 import {ProfileProvider} from "../../providers/profile/profile";
 import {HomePage} from "../home/home";
 import {RegistrierungPage} from "../registrierung/registrierung";
+import { Vibration } from '@ionic-native/vibration';
 
 /**
  * Generated class for the SignUpPage page.
@@ -22,7 +23,7 @@ export class SignUpPage {
 
   private credentials: FormGroup;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private menu: MenuController, private formBuilder: FormBuilder, private alertCtrl: AlertController, private restProvider: RestProvider, private profile: ProfileProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private vibrattion: Vibration, private menu: MenuController, private formBuilder: FormBuilder, private alertCtrl: AlertController, private restProvider: RestProvider, private profile: ProfileProvider) {
     this.credentials = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
@@ -50,11 +51,13 @@ export class SignUpPage {
 
       // User nicht gefunden.
       if(user === undefined){
+        this.vibrattion.vibrate(1000);
         this.noUserAlert(username);
       }
       else{
         // Password stimmt nicht
         if(user.password != password){
+          this.vibrattion.vibrate(1000);
           this.wrongPasswordAlert();
         }
         else{
