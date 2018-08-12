@@ -14,44 +14,44 @@
 </ion-header>
 
 
-<ion-content padding>
-    <ion-item>
+<ion-content padding class="masters">
+    <ion-item class="item item-trns text-center">
       <ion-label color="primary" stacked>Username</ion-label>
       <ion-input type="text" [readonly]="true" [(ngModel)]="myData.username"></ion-input>
     </ion-item>
-    <ion-item>
+    <ion-item class="item item-trns text-center"> 
       <ion-label color="primary" stacked>Geschlecht</ion-label>
       <ion-input type="text" [readonly]="true" [(ngModel)]="myData.sex"></ion-input>
     </ion-item>
-  <ion-item>
+  <ion-item class="item item-trns text-center">
     <ion-label color="primary" stacked>Vorname</ion-label>
     <ion-input type="text" [(ngModel)]="myData.firstname"></ion-input>
   </ion-item>
-  <ion-item>
+  <ion-item class="item item-trns text-center"> 
     <ion-label color="primary" stacked>Nachname</ion-label>
     <ion-input type="text" [(ngModel)]="myData.lastname"></ion-input>
   </ion-item>
-  <ion-item>
+  <ion-item class="item item-trns text-center">  
     <ion-label color="primary" stacked>Straße</ion-label>
     <ion-input type="text" [(ngModel)]="myData.street"></ion-input>
   </ion-item>
-  <ion-item>
+  <ion-item class="item item-trns text-center">
     <ion-label color="primary" stacked>Postleitzahl</ion-label>
     <ion-input type="number" [(ngModel)]="myData.postcode"></ion-input>
   </ion-item>
-  <ion-item>
+  <ion-item class="item item-trns text-center">
     <ion-label color="primary" stacked>Land</ion-label>
     <ion-input type="text" [(ngModel)]="myData.country"></ion-input>
   </ion-item>
-  <ion-item>
+  <ion-item class="item item-trns text-center">
     <ion-label color="primary" stacked>Geburtstag</ion-label>
     <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="myData.birthdate"></ion-datetime>
   </ion-item>
-    <ion-item>
+    <ion-item class="item item-trns text-center">
      <ion-label color="primary" stacked>E-Mail</ion-label>
      <ion-input type="text" [(ngModel)]="myData.email"></ion-input>
    </ion-item>
-   <ion-item>
+   <ion-item class="item item-trns text-center">
       <ion-label color="primary" stacked>Beruf</ion-label>
       <ion-select [(ngModel)]="myData.profession">
         <ion-option value="Arbeitslos">Arbeitslos</ion-option>
@@ -60,17 +60,17 @@
         <ion-option value="Sonstiges">Sonstiges</ion-option>
       </ion-select>
    </ion-item>
-   <ion-item>
+   <ion-item class="item item-trns text-center">
      <ion-label color="primary" stacked>Jährliches Einkommen</ion-label>
      <ion-input type="number" [(ngModel)]="myData.yearlyincome"></ion-input>
    </ion-item>
-   <ion-item>
+   <ion-item class="item item-trns text-center">
       <ion-checkbox item-right [(ngModel)]="myData.house_owner"></ion-checkbox>
       <ion-label color="primary">Grundbesitzer</ion-label>
     </ion-item>
   
     <p align="center"><font size="3">Dein Foto:</font></p>
     <img [src]="picture" *ngIf="picture" />
-   <button ion-button (click)="takePicture()" block>Foto aufnehmen</button>
-   <button ion-button (click)="saveData()" block>Speichern</button>
+   <button ion-button class="button1"  (click)="takePicture()" block>Foto aufnehmen</button>
+   <button ion-button class="button1"  (click)="saveData()" block>Speichern</button>
 </ion-content>

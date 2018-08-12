@@ -6,25 +6,25 @@
       <ion-title>Kreditvergleich</ion-title>
     </ion-navbar>
   </ion-header>
-  <ion-content padding>
+  <ion-content padding class="masters">
    <!-- <h1> Kreditvergleich</h1> -->
     <img src="assets/imgs/logo_credit.png" style="display: block; margin-left: auto; margin-right: auto;" alt="Logo">
 
-    <ion-item>
+    <ion-item class="item item-trns text-center">
         <ion-label color="primary" stacked>Kreditart</ion-label>
         <ion-select [(ngModel)]="selected_credit_name" disabled="{{credits_isDisabled}}" (ionChange)="onCreditSelected($event)">
           <ion-option *ngFor="let credit_name of credits" value="{{credit_name}}">{{credit_name}}</ion-option>
         </ion-select>
      </ion-item>
 
-     <ion-item>
+     <ion-item class="item item-trns text-center">
         <ion-label color="primary" stacked>Kreditsumme</ion-label>
         <ion-select [(ngModel)]="selected_credit_value"  disabled="{{values_isDisabled}}" (ionChange)="onCreditValueSelected($event)">
           <ion-option *ngFor="let credit_value of values" value="{{credit_value}}">{{credit_value}}</ion-option>
         </ion-select>
      </ion-item>
 
-     <ion-item>
+     <ion-item class="item item-trns text-center">
         <ion-label color="primary" stacked>Kreditdauer</ion-label>
         <ion-select [(ngModel)]="selected_credit_duration" disabled="{{durations_isDisabled}}" (ionChange)="onCreditDurationSelected($event)">
           <ion-option *ngFor="let credit_duration of durations" value="{{credit_duration}}">{{credit_duration}}</ion-option>
@@ -33,7 +33,7 @@
 
      <p align="center"><font size="3">Unsere Empfehlungen für dich:</font></p>
 
-     <button ion-item *ngFor="let credit_data of sorted_credit_data" (click)="creditClicked(credit_data)">
+     <button ion-item class="button1" *ngFor="let credit_data of sorted_credit_data" (click)="creditClicked(credit_data)">
           <b>{{credit_data.finance_institute}}</b> 
           ab: {{credit_data.interest_rate_from}}%
      </button>

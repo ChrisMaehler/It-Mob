@@ -3,16 +3,16 @@
     <ion-title>Login</ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding>
+<ion-content padding class="masters">
     
 
     <img src="assets/imgs/logo_credit.png" style="display: block; margin-left: auto; margin-right: auto;" alt="Logo">
   <form [formGroup]="credentials" (ngSubmit)="signIn()">
-    <ion-item>
+    <ion-item class="item item-trns text-center">
       <ion-label color="primary" stacked>Username</ion-label>
       <ion-input type="text" formControlName="username" placeholder="Dein Username"></ion-input>
     </ion-item>
-    <ion-item>
+    <ion-item class="item item-trns text-center">
       <ion-label color="primary" stacked>Passwort</ion-label>
       <ion-input type="password" formControlName="password" placeholder="Dein Passwort"></ion-input>
     </ion-item>
