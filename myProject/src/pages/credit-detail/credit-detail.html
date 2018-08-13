@@ -7,13 +7,41 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{credit.finance_institute}}</ion-title>
+    <ion-title>{{credit.finance_institute}} {{credit.name}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content padding class="masters"> 
-  <ion-item class="item item-trns text-center">
+
+  <div text-center>
+    <p><font size="5" color="black"><b>Kreditdetails</b></font></p>
+  </div>
+
+  <div text-left>
+      <p><font size="3" color="DodgerBlue">Kreditart:</font><br />
+        <font size="4" color="black"><b>{{credit.name}}</b></font><br /></p>
+        
+      <p><font size="3" color="DodgerBlue">Kreditsumme:</font><br /> 
+        <font size="4" color="black">Von <b>{{credit.volume_from}}€</b> bis zu <b>{{credit.volume_to}}€</b></font></p>
+      
+      <p><font size="3" color="DodgerBlue">Effektiver Jahreszins:</font><br /> 
+        <font size="4" color="black">Ab <b>{{credit.interest_rate_from}}%</b> </font></p>
+   
+      <p><font size="3" color="DodgerBlue">Kreditlaufzeit:</font><br /> 
+        <font size="4" color="black">Bei einer Laufzeit von <b>{{credit.duration_month}}</b> Monaten</font></p>
+          
+      <p><font size="3" color="DodgerBlue">Bank:</font><br /> 
+        <font size="4" color="black">Ein Angebot der <b>{{credit.finance_institute}}</b></font></p>
+        
+      <p><font size="3" color="black"><a href="#" (click)="openLink(credit.url)">Weitere Details</a> zum Kredit oder dem Kreditgeber.</font></p>
+
+  </div>
+
+
+<!--   <ion-item class="item item-trns text-center" no-lines>
       <a href="#" (click)="openLink(credit.url)">{{credit.url}}</a> 
-  </ion-item>
+  </ion-item> -->
+
+
 </ion-content>
