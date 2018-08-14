@@ -9,9 +9,11 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class RestProvider {
+      //Für localhost
+  //private BASE_URL = '/api'; 
+      //Für Smartphone App
+  private BASE_URL = "https://creditapp-358e.restdb.io/rest"
 
-  private BASE_URL = '/api'; 
-  //private BASE_URL = "https://creditapp-358e.restdb.io/rest"
   private USERS_URL = this.BASE_URL + '/appuser';
   private CREDIT_URL = this.BASE_URL + '/creditdatacollection';
   private PERSONA_URL = this.BASE_URL + '/personagroupcollection';
@@ -20,7 +22,6 @@ export class RestProvider {
   constructor(public http: HttpClient) {
   }
 
-  // TODO: Rename to getCreditData()
   getData(){
     var headers = new HttpHeaders().set('cache-control','no-cache').set('x-apikey','874dc4397f95158840d71f3559fb99ce18722');
     return this.http.get(this.CREDIT_URL+'?h={"$orderby":{"name":1,"volume_from":1,"duration_month":1}}', {headers: headers});

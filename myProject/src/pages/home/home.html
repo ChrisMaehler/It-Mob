@@ -18,14 +18,14 @@
      </ion-item>
 
      <ion-item class="item item-trns text-center">
-        <ion-label color="primary" stacked>Kreditsumme</ion-label>
+        <ion-label color="primary" stacked>Kreditsumme (in Euro)</ion-label>
         <ion-select [(ngModel)]="selected_credit_value"  disabled="{{values_isDisabled}}" (ionChange)="onCreditValueSelected($event)">
           <ion-option *ngFor="let credit_value of values" value="{{credit_value}}">{{credit_value}}</ion-option>
         </ion-select>
      </ion-item>
 
      <ion-item class="item item-trns text-center">
-        <ion-label color="primary" stacked>Kreditdauer</ion-label>
+        <ion-label color="primary" stacked>Kreditdauer (in Monaten)</ion-label>
         <ion-select [(ngModel)]="selected_credit_duration" disabled="{{durations_isDisabled}}" (ionChange)="onCreditDurationSelected($event)">
           <ion-option *ngFor="let credit_duration of durations" value="{{credit_duration}}">{{credit_duration}}</ion-option>
         </ion-select>
